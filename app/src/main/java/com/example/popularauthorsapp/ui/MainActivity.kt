@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var authorAdapter: AuthorAdapter
     private lateinit var authorViewModel: AuthorViewModel
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private var networkSnackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        authorViewModel.networkStatusLiveData.observe(this, Observer { isConnected ->
+            if (isConnected) {
+                hideNetworkSnackbar()
+                fetchTopAuthors() // Refresh data when the network is back
+            } else {
+                showNetworkSnackbar()
+            }
+        })
+
         fetchTopAuthors()
     }
 
@@ -57,8 +67,24 @@ class MainActivity : AppCompatActivity() {
     private fun showErrorSnackbar() {
         Snackbar.make(
             findViewById(android.R.id.content),
-            "Error fetching authors.",
+            "Error fetching authors. Please check your internet connection.",
             Snackbar.LENGTH_LONG
         ).show()
+    }
+
+    private fun showNetworkSnackbar() {
+        if (networkSnackbar == null) {
+            networkSnackbar = Snackbar.make(
+                findViewById(android.R.id.content),
+                "No network connection.",
+                Snackbar.LENGTH_INDEFINITE
+            )
+            networkSnackbar?.show()
+        }
+    }
+
+    private fun hideNetworkSnackbar() {
+        networkSnackbar?.dismiss()
+        networkSnackbar = null
     }
 }
