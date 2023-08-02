@@ -1,9 +1,13 @@
 package com.example.popularauthorsapp.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.popularauthorsapp.data.local.AppDatabase
 import com.example.popularauthorsapp.data.remote.AuthorsApiService
 import com.example.popularauthorsapp.data.remote.AuthorsApiService.Companion.API_HOST
 import com.example.popularauthorsapp.data.remote.AuthorsApiService.Companion.API_KEY
 import com.example.popularauthorsapp.data.remote.AuthorsApiService.Companion.BASE_URL
+import com.example.popularauthorsapp.data.local.AppDatabase.Companion.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,4 +43,10 @@ object AppModule {
     @Singleton
     fun provideAuthorApiService(retrofit: Retrofit): AuthorsApiService =
         retrofit.create(AuthorsApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDatabase(application: Application): AppDatabase =
+        Room.databaseBuilder(application, AppDatabase::class.java, DATABASE_NAME)
+            .build()
 }
