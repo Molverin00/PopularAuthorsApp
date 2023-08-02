@@ -11,7 +11,7 @@ class AuthorRepository(private val apiService: AuthorsApiService, private val au
             cachedAuthors
         } else {
             val authors = apiService.getTopAuthors()
-            authorDao.insertAll(authors)
+            authorDao.insertAllAuthors(authors)
             authors
         }
     }
