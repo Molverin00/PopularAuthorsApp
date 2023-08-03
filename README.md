@@ -1,12 +1,6 @@
 # Popular Authors App
 
-![Light mode](screenshots/screenshot_light.png)
-![Dark mode](screenshots/screenshot_dark.png)
-![No_data](screenshots/screenshot_error.png)
-![Pull to_refresh](screenshots/screenshot_refresh.png)
-![No_connection](screenshots/screenshot_no_con.png)
-![Data_loading](screenshots/screenshot_data_loading.png)
-![Image_loading](screenshots/screenshot_image_loading.png)
+<img src="screenshots/screenshot_light.png" alt="Light mode" width="200"/> <img src="screenshots/screenshot_dark.png" alt="Dark mode" width="200"/> <img src="screenshots/screenshot_error.png" alt="No data" width="200"/> <img src="screenshots/screenshot_refresh.png" alt="Pull to refresh" width="200"/> <img src="screenshots/screenshot_no_con.png" alt="No connection" width="200"/> <img src="screenshots/screenshot_data_loading.png" alt="Data loading" width="200"/> <img src="screenshots/screenshot_image_loading.png" alt="Image loading" width="200"/>
 
 ## Table of Contents
 
