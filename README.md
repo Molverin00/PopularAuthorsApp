@@ -22,15 +22,15 @@ Popular Authors App is a Android application showcase written in Kotlin that all
 
 ## Features
 
-[x] View a list of popular authors with their details (circular picture, name, number of published books and most known book)
-[X] Navigate to external web links by clicking author name or book for further details
-[X] Offline access to previously fetched data using Room database
-[X] Network status monitoring and real-time data handling; Show no connection dismissible snackBar when offline and auto fetch data with connection re-establish.
-[X] Swipe/pull to refresh to manually trigger data update
-[X] Modularized architecture with MVVM and repository pattern
-[X] Image manipulation and caching
-[X] Dependency Injection
-[ ] Unit testing and functional UI testing
+- [x] View a list of popular authors with their details (circular picture, name, number of published books and most known book)
+- [X] Navigate to external web links by clicking author name or book for further details
+- [X] Offline access to previously fetched data using Room database
+- [X] Network status monitoring and real-time data handling; Show no connection dismissible snackBar when offline and auto fetch data with connection re-establish.
+- [X] Swipe/pull to refresh to manually trigger data update
+- [X] Modularized architecture with MVVM and repository pattern
+- [X] Image manipulation and caching
+- [X] Dependency Injection
+- [ ] Unit testing and functional UI testing
 
 ## Architecture and project structure
 
@@ -69,7 +69,7 @@ data flow is managed in a unidirectional manner using Kotlin Flows. Unidirection
 - Coroutines for asynchronous programming
 - Material Design Components for UI
 - SwipeRefreshLayout for pull-to-refresh functionality
-- --JUnit and Mockito for unit testing--
+- ~~JUnit and Mockito for unit testing~~
 
 ## Challenges Faced
 
@@ -80,11 +80,11 @@ During the development of the Popular Authors App, several challenges were encou
 
 ## Future improvements
 
-[ ] (feat) Search and Sort Features
-[ ] (UI) Enhanced UI and Reusable UI Elements
-[ ] (UI) Logo and Splash Screen
-[ ] (UI) Landscape Mode and Tablet Size Support
-[ ] (testing) Unit Testing and Functional UI Testing
+- [ ] (feat) Search and Sort Features
+- [ ] (UI) Enhanced UI and Reusable UI Elements
+- [ ] (UI) Logo and Splash Screen
+- [ ] (UI) Landscape Mode and Tablet Size Support
+- [ ] (testing) Unit Testing and Functional UI Testing
 
 ## Getting Started
 
