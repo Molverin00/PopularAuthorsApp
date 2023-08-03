@@ -11,8 +11,9 @@ import com.bumptech.glide.Glide
 import com.example.popularauthorsapp.R
 import com.example.popularauthorsapp.data.model.Author
 import com.example.popularauthorsapp.databinding.ItemAuthorBinding
+import javax.inject.Inject
 
-class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
+class AuthorsAdapter @Inject constructor(private val circularProgressDrawable: CircularProgressDrawable) : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
 
     private val authorsList = mutableListOf<Author>()
 
@@ -38,12 +39,6 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
 
     inner class AuthorViewHolder(private val binding: ItemAuthorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        private val circularProgressDrawable = CircularProgressDrawable(itemView.context).apply {
-            strokeWidth = 5f
-            centerRadius = 30f
-            start()
-        }
 
         fun bind(author: Author) {
             binding.tvAuthorName.text = author.name

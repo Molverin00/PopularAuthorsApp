@@ -18,13 +18,15 @@ import com.example.popularauthorsapp.util.ConnectivityMonitor
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val authorViewModel: AuthorViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private lateinit var authorsAdapter: AuthorsAdapter
+    @Inject
+    lateinit var authorsAdapter: AuthorsAdapter
     private lateinit var snackBar: Snackbar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
@@ -94,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initAuthorsRecyclerview() {
-        authorsAdapter = AuthorsAdapter()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = authorsAdapter
