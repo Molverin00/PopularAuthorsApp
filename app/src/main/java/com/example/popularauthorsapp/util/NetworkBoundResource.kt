@@ -1,4 +1,4 @@
-package com.example.popularauthorsapp.core.util
+package com.example.popularauthorsapp.util
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
