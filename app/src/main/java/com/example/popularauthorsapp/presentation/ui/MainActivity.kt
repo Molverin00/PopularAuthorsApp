@@ -25,10 +25,12 @@ class MainActivity : AppCompatActivity() {
 
     private val authorViewModel: AuthorViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
+
     @Inject
     lateinit var authorsAdapter: AuthorsAdapter
     private lateinit var snackBar: Snackbar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,36 +41,26 @@ class MainActivity : AppCompatActivity() {
         // Init views
         initAuthorsRecyclerview()
         initNetworkStatusSnackBar()
-
-        swipeRefreshLayout = binding.swipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener {
-            // Trigger the refresh action here
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    authorViewModel.forceFetchTopAuthors()
-                    swipeRefreshLayout.isRefreshing = false
-                }
-            }
-
-        }
+        initSwipeRefreshLayout()
 
 
         // Observe network status flow
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authorViewModel.networkStatus.collect { status ->
-                    println("isConnected: ${status == ConnectivityMonitor.Status.Available}")
-                    showNetworkStatusSnackBar(status == ConnectivityMonitor.Status.Available)
-
-                    if (status == ConnectivityMonitor.Status.Available) {
-                        authorViewModel.fetchTopAuthorsManually()
-                    }
-                }
-            }
-        }
-
+        observeNetworkStatus()
 
         // Observe authors flow
+        observeTopAuthors()
+    }
+
+
+    private fun initSwipeRefreshLayout() {
+        swipeRefreshLayout = binding.swipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener {
+            forceFetchTopAuthors()
+        }
+    }
+
+
+    private fun observeTopAuthors() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 authorViewModel.authors.collect { result ->
@@ -93,7 +85,32 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+    }
 
+
+    private fun observeNetworkStatus() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                authorViewModel.networkStatus.collect { status ->
+                    println("isConnected: ${status == ConnectivityMonitor.Status.Available}")
+                    showNetworkStatusSnackBar(status == ConnectivityMonitor.Status.Available)
+
+                    if (status == ConnectivityMonitor.Status.Available) {
+                        authorViewModel.fetchTopAuthorsManually()
+                    }
+                }
+            }
+        }
+    }
+
+
+    private fun forceFetchTopAuthors() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                authorViewModel.forceFetchTopAuthors()
+                swipeRefreshLayout.isRefreshing = false
+            }
+        }
     }
 
 
