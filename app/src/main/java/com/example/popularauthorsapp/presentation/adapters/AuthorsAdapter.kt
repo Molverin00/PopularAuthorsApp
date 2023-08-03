@@ -1,5 +1,7 @@
 package com.example.popularauthorsapp.presentation.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -58,7 +60,25 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
                 .into(binding.ivAuthorImage)
 
             // TODO: add url buttons for author and book
+            binding.tvAuthorName.setOnClickListener {
+                goToUrl(author.url)
+            }
+
+            binding.tvPopularBookTitle.setOnClickListener {
+                goToUrl(author.popularBookUrl)
+            }
+
         }
+
+        private fun goToUrl(url: String) {
+            try {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                itemView.context.startActivity(intent)
+            } catch (e: Exception) {
+                println(e.localizedMessage)
+            }
+        }
+
     }
 
     private class AuthorDiffCallback(
