@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Popular Authors App</string>
+    <string name="app_name">Popular Authors</string>
     <string name="text_best_known_for">Best known for:</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="btn_label_dismiss">Dismiss</string>
