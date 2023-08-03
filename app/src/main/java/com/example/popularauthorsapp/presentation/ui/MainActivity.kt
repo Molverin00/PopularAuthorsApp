@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Observe authors flow
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authorViewModel.authors.collect() { result ->
+                authorViewModel.authors.collect { result ->
 
                     if (result.data != null) {
                         println("result.data.size: ${result.data.size}")

@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class AuthorRepository @Inject constructor(
     private val apiService: AuthorsApiService,
-    private val database: AppDatabase
+    database: AppDatabase
 ) {
 
     private val authorDao = database.authorDao()
@@ -51,14 +51,14 @@ class AuthorRepository @Inject constructor(
      * If an error occurs during the fetch, the list of authors from the local database is returned.
      */
     suspend fun forceFetchTopAuthors(): List<Author> {
-        try {
+        return try {
             val authors = apiService.getTopAuthors()
             authorDao.deleteAllAuthors()
             authorDao.insertAllAuthors(authors)
-            return authors
+            authors
         } catch (e: Exception) {
             println(e.localizedMessage)
-            return authorDao.getAllAuthors().first()
+            authorDao.getAllAuthors().first()
         }
     }
 

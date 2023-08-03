@@ -39,11 +39,13 @@ object AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+
     @Provides
     @Singleton
     fun provideAuthorApiService(retrofit: Retrofit): AuthorsApiService =
         retrofit.create(AuthorsApiService::class.java)
 
+    
     @Provides
     @Singleton
     fun provideDatabase(application: Application): AppDatabase =
