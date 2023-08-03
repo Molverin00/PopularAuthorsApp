@@ -80,6 +80,8 @@ class MainActivity : AppCompatActivity() {
                         println("result.data is null")
                     }
 
+                    binding.ivEmptyAuthorList.isVisible =
+                        result is Resource.Error && result.data.isNullOrEmpty()
                     binding.pbLoadingProgressBar.isVisible =
                         result is Resource.Loading && result.data.isNullOrEmpty()
                     binding.tvErrorMessage.isVisible =
