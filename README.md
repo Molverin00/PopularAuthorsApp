@@ -80,11 +80,11 @@ During the development of the Popular Authors App, several challenges were encou
 
 ## Future improvements
 
+- [ ] (testing) Unit Testing and Functional UI Testing
 - [ ] (feat) Search and Sort Features
 - [ ] (UI) Enhanced UI and Reusable UI Elements
 - [ ] (UI) Logo and Splash Screen
 - [ ] (UI) Landscape Mode and Tablet Size Support
-- [ ] (testing) Unit Testing and Functional UI Testing
 
 ## Getting Started
 
