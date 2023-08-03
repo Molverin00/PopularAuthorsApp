@@ -13,11 +13,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_cardview_author">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_authorPicture"
+            android:id="@+id/ivAuthorImage"
             android:src="@drawable/placeholder_author"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,73 +26,65 @@
             android:layout_height="150dp" />
 
         <Button
-            android:id="@+id/btn_author_page"
+            android:id="@+id/btnAuthorUrl"
             android:text="Author page"
             android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/iv_authorPicture"
-            app:layout_constraintStart_toStartOf="@id/iv_authorPicture"
-            app:layout_constraintEnd_toEndOf="@id/iv_authorPicture"
+            app:layout_constraintTop_toBottomOf="@id/ivAuthorImage"
+            app:layout_constraintStart_toStartOf="@id/ivAuthorImage"
+            app:layout_constraintEnd_toEndOf="@id/ivAuthorImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tv_authorName"
+            android:id="@+id/tvAuthorName"
             android:text="author name"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:layout_margin="8dp"
-            app:layout_constraintStart_toEndOf="@id/iv_authorPicture"
-            app:layout_constraintTop_toTopOf="@id/iv_authorPicture"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toTopOf="@id/ivAuthorImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tv_publishedBooks"
+            android:id="@+id/tvPublishedBooks"
             android:text="author of 1234 books"
             android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/tv_authorName"
-            app:layout_constraintStart_toEndOf="@id/iv_authorPicture"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthorName"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tv_bestKnown"
+            android:id="@+id/tvBestKnown"
             android:text="@string/text_best_known_for"
-            app:layout_constraintTop_toBottomOf="@id/tv_publishedBooks"
-            app:layout_constraintStart_toEndOf="@id/iv_authorPicture"
+            app:layout_constraintTop_toBottomOf="@id/tvPublishedBooks"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
             android:layout_marginTop="16dp"
             android:layout_marginStart="@dimen/default_margin"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <ImageView
-            android:id="@+id/iv_popularBookCover"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/placeholder_book"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_authorPicture"
-            app:layout_constraintTop_toBottomOf="@+id/tv_bestKnown" />
-
         <TextView
-            android:id="@+id/tv_popularBookTitle"
+            android:id="@+id/tvPopularBookTitle"
             android:text="Popular book title"
-            app:layout_constraintStart_toEndOf="@id/iv_popularBookCover"
-            app:layout_constraintTop_toTopOf="@id/iv_popularBookCover"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toBottomOf="@id/tvBestKnown"
+            android:layout_marginStart="@dimen/default_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btn_book_page"
+            android:id="@+id/btnBookUrl"
             android:text="Check book"
             android:textAllCaps="false"
             android:textColor="@android:color/holo_blue_dark"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            app:layout_constraintStart_toEndOf="@id/iv_popularBookCover"
-            app:layout_constraintTop_toBottomOf="@id/tv_popularBookTitle"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toBottomOf="@id/tvPopularBookTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
