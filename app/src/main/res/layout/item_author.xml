@@ -69,7 +69,6 @@
             android:layout_marginTop="16dp"
             android:text="@string/text_best_known_for"
             android:textStyle="italic"
-
             app:layout_constraintBottom_toTopOf="@id/tvPopularBookTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
@@ -82,12 +81,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
-
             android:backgroundTint="@color/teal_700"
+            android:drawableEnd="@drawable/ic_book"
             android:text="Popular book title"
             android:textAllCaps="false"
             android:textSize="12sp"
-            app:icon="@drawable/ic_external_link"
+            app:icon="@drawable/ic_book"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
             app:layout_constraintTop_toBottomOf="@id/tvBestKnown" />
