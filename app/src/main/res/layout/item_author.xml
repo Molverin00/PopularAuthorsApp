@@ -1,94 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    card_view:cardCornerRadius="16dp"
-    app:cardUseCompatPadding="true"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
+    android:id="@+id/cvMainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="8dp"
-    android:id="@+id/cvMainContainer">
+    android:orientation="vertical"
+    android:padding="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
 
         <ImageView
             android:id="@+id/ivAuthorImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:src="@drawable/placeholder_author"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="8dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
-
-        <Button
-            android:id="@+id/btnAuthorUrl"
-            android:text="Author page"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/ivAuthorImage"
-            app:layout_constraintStart_toStartOf="@id/ivAuthorImage"
-            app:layout_constraintEnd_toEndOf="@id/ivAuthorImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintEnd_toEndOf="@id/gl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvAuthorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:drawablePadding="4dp"
             android:text="author name"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:layout_margin="8dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_external_link"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
-            app:layout_constraintTop_toTopOf="@id/ivAuthorImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            app:layout_constraintTop_toTopOf="@id/ivAuthorImage" />
 
         <TextView
             android:id="@+id/tvPublishedBooks"
-            android:text="author of 1234 books"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/tvAuthorName"
-            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="author of 1234 books"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthorName" />
 
         <TextView
             android:id="@+id/tvBestKnown"
-            android:text="@string/text_best_known_for"
-            app:layout_constraintTop_toBottomOf="@id/tvPublishedBooks"
-            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="@dimen/default_margin"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tvPopularBookTitle"
-            android:text="Popular book title"
-            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
-            app:layout_constraintTop_toBottomOf="@id/tvBestKnown"
-            android:layout_marginStart="@dimen/default_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:layout_marginTop="16dp"
+            android:text="@string/text_best_known_for"
+            android:textStyle="italic"
+
+            app:layout_constraintBottom_toTopOf="@id/tvPopularBookTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
+            app:layout_constraintTop_toBottomOf="@id/tvPublishedBooks" />
 
         <Button
-            android:id="@+id/btnBookUrl"
-            android:text="Check book"
+            android:id="@+id/tvPopularBookTitle"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+
+            android:backgroundTint="@color/teal_700"
+            android:text="Popular book title"
             android:textAllCaps="false"
-            android:textColor="@android:color/holo_blue_dark"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:textSize="12sp"
+            app:icon="@drawable/ic_external_link"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivAuthorImage"
-            app:layout_constraintTop_toBottomOf="@id/tvPopularBookTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:layout_constraintTop_toBottomOf="@id/tvBestKnown" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

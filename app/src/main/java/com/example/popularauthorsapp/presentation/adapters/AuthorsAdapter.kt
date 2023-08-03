@@ -34,7 +34,8 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
 
     override fun getItemCount(): Int = authorsList.size
 
-    inner class AuthorViewHolder(private val binding: ItemAuthorBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class AuthorViewHolder(private val binding: ItemAuthorBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         private val circularProgressDrawable = CircularProgressDrawable(itemView.context).apply {
             strokeWidth = 5f
@@ -45,7 +46,8 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
         fun bind(author: Author) {
             binding.tvAuthorName.text = author.name
             binding.tvPopularBookTitle.text = author.popularBookTitle
-            binding.tvPublishedBooks.text = author.numberPublishedBooks.toString()
+            binding.tvPublishedBooks.text =
+                itemView.context.getString(R.string.number_books, author.numberPublishedBooks)
             // Load the author image using Glide or any other image loading library
 
             Glide.with(itemView)
@@ -59,7 +61,10 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
         }
     }
 
-    private class AuthorDiffCallback(private val oldList: List<Author>, private val newList: List<Author>) : DiffUtil.Callback() {
+    private class AuthorDiffCallback(
+        private val oldList: List<Author>,
+        private val newList: List<Author>
+    ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int = oldList.size
         override fun getNewListSize(): Int = newList.size
 
