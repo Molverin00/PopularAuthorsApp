@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.popularauthorsapp.R
 import com.example.popularauthorsapp.data.model.Author
@@ -34,14 +35,24 @@ class AuthorsAdapter : RecyclerView.Adapter<AuthorsAdapter.AuthorViewHolder>() {
     override fun getItemCount(): Int = authorsList.size
 
     inner class AuthorViewHolder(private val binding: ItemAuthorBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        private val circularProgressDrawable = CircularProgressDrawable(itemView.context).apply {
+            strokeWidth = 5f
+            centerRadius = 30f
+            start()
+        }
+
         fun bind(author: Author) {
             binding.tvAuthorName.text = author.name
             binding.tvPopularBookTitle.text = author.popularBookTitle
             binding.tvPublishedBooks.text = author.numberPublishedBooks.toString()
             // Load the author image using Glide or any other image loading library
+
             Glide.with(itemView)
                 .load(author.image)
-                .placeholder(R.drawable.placeholder_author)
+                .placeholder(circularProgressDrawable)
+                .error(R.drawable.placeholder_author)
+                .circleCrop()
                 .into(binding.ivAuthorImage)
 
             // TODO: add url buttons for author and book

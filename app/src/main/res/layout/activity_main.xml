@@ -4,32 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/AppBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout">
-
-        <!-- Add your Toolbar or any other layout if needed -->
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        app:layout_constraintTop_toBottomOf="@id/AppBarLayout">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/AppBarLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:padding="16dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_author" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
